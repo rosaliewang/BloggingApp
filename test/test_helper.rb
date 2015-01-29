@@ -33,4 +33,9 @@ class ActiveSupport::TestCase
     def integration_test?
       defined?(post_via_redirect)
     end
+
+
+
+  # kill verbosity
+  $VERBOSE = nil
 end

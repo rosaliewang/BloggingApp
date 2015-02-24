@@ -7,5 +7,4 @@ class Article < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 70 }, allow_blank: false
-  validates :content, presence: true
 end

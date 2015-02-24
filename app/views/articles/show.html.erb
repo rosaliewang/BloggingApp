@@ -10,9 +10,13 @@
 
     <p>
       <% if @article.published? %>
-          <span class="label label-success">Published</span>
+          <span class="label label-primary">Published</span>
+      <% elsif @article.created_at.nil? %>
+          <span class="label label-default"></span>
+      <% elsif @article.deleted %>
+          <span class="label label-default">Trash</span>
       <% else %>
-          <span class="label label-default">Draft</span>
+          <span class="label label-warning">Draft</span>
       <% end %>
     </p>
     <%= link_to 'Back', current_user %>

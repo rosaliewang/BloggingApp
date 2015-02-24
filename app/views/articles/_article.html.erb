@@ -16,9 +16,7 @@
   <% if current_user?(article.user) %>
       <div id="edit-line">
         <%= link_to "Show", article, method: :get %> |
-        <%= link_to "Edit", edit_article_path(article) %> |
-        <%= link_to "Delete", article, method: :delete,
-                      data: { confirm: "Don't click this, man." } %>
+        <%= link_to "Edit", edit_article_path(article) %>
       </div>
   <% end %>
 </div>

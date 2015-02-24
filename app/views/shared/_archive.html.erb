@@ -3,7 +3,9 @@
     <% @blog_months.sort.reverse.each do |month, blogs| %>
         <ol class="list-unstyled">
           <li class="archive-header">
-            <a href="javascript:void(0)"><%=h month.strftime("%B %Y") %></a>
+            <a href="javascript:void(0)">
+              </span><%=h month.strftime("%B %Y") %>
+            </a>
           </li>
           <ul class="nav-items">
             <% blogs.each do |article| %>

@@ -8,7 +8,7 @@
     <%= f.text_area :content, class: 'form-control' %>
 
     <% if @article.published? %>
-        <%= f.submit "Update", class: "btn btn-primary" %>
+        <%= f.submit "Publish", class: "btn btn-primary" %>
         <%= f.submit "Revert to Draft", class: "btn btn-default" %>
         <%= f.submit "Move to Trash", class: "btn btn-default" %>
     <% else %>

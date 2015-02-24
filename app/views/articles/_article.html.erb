@@ -3,15 +3,13 @@
   <p class="blog-post-meta">
     <% if !article.published_at.nil? %>
         <%= article.published_at.to_formatted_s(:long) %>
-    <% end %>
-    <% if article.published_at.nil? && article.updated_at.nil? %>
+    <% elsif article.published_at.nil? && article.updated_at.nil? %>
         <%= article.created_at.to_formatted_s(:long) %>
-    <% end %>
-    <% if article.published_at.nil? && !article.updated_at.nil? %>
+    <% elsif article.published_at.nil? && !article.updated_at.nil? %>
         <%= article.updated_at.to_formatted_s(:long) %>
     <% end %>
   </p>
-  <%= article.content %>
+  <%= simple_format article.content %>
 
   <br>
   <br>

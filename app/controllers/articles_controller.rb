@@ -60,12 +60,14 @@ class ArticlesController < ApplicationController
       # Handle a successful update.
       if publishing?
         flash[:success] = "Blog was successfully updated."
+        redirect_to @article
       elsif unpublishing?
         flash[:success] = "Blog was successfully saved to draft."
+        redirect_to current_user
       elsif move_to_trash?
         flash[:success] = "Blog was successfully moved to trash."
+        redirect_to current_user
       end
-      redirect_to root_url
     else
       render 'edit'
     end
@@ -74,17 +76,15 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     flash[:success] = "Blog was permentantly deleted."
-    redirect_to root_url
+    redirect_to current_user
   end
 
   def update_multiple
     @articles_to_update = Article.friendly.find(params[:article_ids])
-      #flash[:success] = "Reaching here."
     if publishing?
       @articles_to_update.each do |article|
         article.update_attributes(:published_at => Time.zone.now,
                                 :published => true, :deleted => false)
-        #Rails.logger.debug("Article: #{article.inspect}")
       end
       flash[:success] = "Blogs was successfully published."
     elsif unpublishing?
@@ -112,7 +112,7 @@ class ArticlesController < ApplicationController
     end
 
     def correct_user
-      @article = current_user.articles.friendly.find_by(id: params[:id])
+      @article = current_user.articles.friendly.find(params[:id])
       redirect_to root_url if @article.nil?
     end
 

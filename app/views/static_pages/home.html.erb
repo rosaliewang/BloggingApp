@@ -1,25 +1,57 @@
 <% if logged_in? %>
     <div class="row">
-      <aside class="col-md-4">
-        <section class="user_info">
-          <%= render 'shared/user_info' %>
-        </section>
-        <section class="micropost_form">
-          <%= render 'shared/micropost_form' %>
-        </section>
+      <h1></h1>
+    </div>
+    <div id="tabs" class="row">
+      <aside class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="home-menu">
+            <a href="#overview" class="active"><span class="glyphicon glyphicon-home"></span> Overview</a>
+          </li>
+          <%= render 'shared/category' %>
+          <li class="home-menu"><a href="#comments"><span class="glyphicon glyphicon-comment">
+
+          </span> Comments</a></li>
+        </ul>
       </aside>
-      <div class="col-md-8">
-        <h3>Micropost Feed</h3>
-        <%= render 'shared/feed' %>
+
+      <div class="clearfix visible-xs-block"></div>
+
+      <div class="col-sm-14 col-md-10">
+        <div id="overview">
+          <p>Overview</p>
+        </div>
+
+        <div id="published">
+          <p>Published</p>
+          <%= form_tag ({:controller => 'articles',:action => 'update_multiple', method: :put}) do %>
+            <%= render 'shared/published_title' %>
+          <% end %>
+        </div>
+
+        <div id="draft">
+          <p>Draft</p>
+          <%= form_tag ({:controller => 'articles',:action => 'update_multiple', method: :put}) do %>
+              <%= render 'shared/draft_title' %>
+          <% end %>
+        </div>
+
+        <div id="trash">
+          <p>Trash</p>
+          <%= form_tag ({:controller => 'articles',:action => 'update_multiple', method: :put}) do %>
+              <%= render 'shared/trash_title' %>
+          <% end %>
+        </div>
+
+        <div id="comments">
+          <p>comments</p>
+        </div>
       </div>
     </div>
 <% else %>
     <div class="center jumbotron">
-      <h1>Welcome to the BLog App</h1>
+      <h1>BlabLabLa!</h1>
 
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
     </div>
-
-    <%= link_to image_tag("rails.png", alt: "Rails logo"),
-                '#' %>
 <% end %>

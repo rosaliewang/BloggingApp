@@ -7,6 +7,32 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
     <%= render 'layouts/shim' %>
+
+    <script type="text/javascript">
+        $(function() {
+            $( "#tabs" ).tabs();
+        });
+
+        $(document).ready(function() {
+            $(".archive-header").click(function () {
+                $archiveheader = $(this);
+                $archivecontent = $archiveheader.next();
+                $archivecontent.slideToggle(500, function () {
+                });
+            });
+        });
+
+        function checkAll(bx) {
+            var cbs = document.getElementsByTagName('input');
+            for(var i=0; i < cbs.length; i++) {
+                if(cbs[i].type == 'checkbox') {
+                    cbs[i].checked = bx.checked;
+                }
+            }
+        }
+
+
+    </script>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -19,5 +45,8 @@
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
     </div>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+
   </body>
 </html>

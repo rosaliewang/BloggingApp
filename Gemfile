@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails',          '4.1.8'
+gem 'rails',          '4.2.0'
 gem 'bootstrap-sass', '3.2.0.0'
 gem 'bcrypt',         '3.1.9'
 gem 'faker',          '1.4.2'
@@ -11,6 +11,7 @@ gem 'mini_magick',    '4.0.4'
 gem 'fog',            '1.27.0'
 gem 'will_paginate',  '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
+gem 'friendly_id'
 
 
 # Use SCSS for stylesheets
@@ -21,6 +22,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

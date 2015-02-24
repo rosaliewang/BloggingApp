@@ -1,0 +1,31 @@
+<table class="table-head">
+  <tbody>
+      <tr>
+        <td width="70%">
+            <input type="checkbox" onclick="checkAll(this)"> Select/Deselect All<br/><br/>
+        </td>
+        <td width="15%">
+          <%= submit_tag "Revert to Draft", class: "btn btn-default btn-sm" %>
+        </td>
+        <td width="15%">
+          <%= submit_tag "Move to Trash", class: "btn btn-default btn-sm" %>
+        </td>
+      </tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <% if @feed_items.any? %>
+      <tbody>
+      <% @feed_items.each do |article| %>
+          <tr>
+            <td width="1%"><%= check_box_tag "article_ids[]", article.id %></td>
+            <td width="84%"><%= link_to article.title, article %></td>
+            <td width="15%"><%= article.published_at.to_date.to_formatted_s(:db) %></td>
+            </td>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @feed_items %>
+

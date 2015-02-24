@@ -1,0 +1,36 @@
+<table class="table-head">
+  <tbody>
+  <tr>
+    <td width="65%">
+      <input type="checkbox" onclick="checkAll(this)"> Select/Deselect All<br/><br/>
+    </td>
+    <td width="10%">
+      <%= submit_tag "Publish", class: "btn btn-default btn-sm" %>
+    </td>
+    <td width="15%">
+      <%= submit_tag "Revert to Draft", class: "btn btn-default btn-sm" %>
+    </td>
+    <td width="10%">
+      <%= submit_tag "Delete", class: "btn btn-default btn-sm" %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<table class="table table-hover">
+  <% if @trash_items.any? %>
+      <tbody>
+      <% @trash_items.each do |article| %>
+          <tr>
+            <td width="1%"><%= check_box_tag "article_ids[]", article.id %></td>
+            <td width="84%"><%= link_to article.title, article %></td>
+            <% if article.updated_at.nil? %>
+                <td width="15%"><%= article.updated_at.to_date.to_formatted_s(:db) %></td>
+            <% else %>
+                <td width="15%"><%= article.created_at.to_date.to_formatted_s(:db) %></td>
+            <% end %>
+          </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>
+<%= will_paginate @trash_items %>

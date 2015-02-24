@@ -1,20 +1,30 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
-  <div class="col-md-8">
-    <% if @user.microposts.any? %>
-        <h3>Microposts (<%= @user.microposts.count %>)</h3>
-        <ol class="microposts">
-          <%= render @microposts %>
+  <h1></h1>
+</div>
+<div class="row">
+  <div class="col-md-8 blog-main">
+    <% if @user.articles.any? %>
+        <ol class="articles">
+          <%= render @articles %>
         </ol>
-        <%= will_paginate @microposts %>
+        <%= will_paginate @articles %>
     <% end %>
   </div>
+  <div class="clearfix visible-xs-block"></div>
+  <aside class="col-sm-3 col-sm-offset-1 blog-sidebar">
+    <div class="sidebar-module sidebar-module-inset">
+      <%= gravatar_for(@user, size: 150) %>
+      <h4>
+        <%= @user.name %>
+      </h4>
+    </div>
+    <div class="sidebar-module">
+      <%= render 'shared/most_recent' %>
+    </div>
+    <div class="sidebar-module">
+      <%= render 'shared/archive' %>
+    </div>
+  </aside>
+
 </div>

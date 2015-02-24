@@ -72,4 +72,13 @@ class UserTest < ActiveSupport::TestCase
       @user.destroy
     end
   end
+
+  test "associated articles should be destroyed" do
+    @user.save
+    @user.articles.create!(title: "ohhhh", content: "Lorem ipsum")
+    assert_difference 'Article.count', -1 do
+      @user.destroy
+    end
+  end
+
 end

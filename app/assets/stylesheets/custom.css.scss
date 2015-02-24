@@ -19,6 +19,8 @@ html {
 
 body {
   padding-top: 60px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
 }
 
 section {
@@ -38,8 +40,12 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
+nav, nav-sidebar, navbar-nav, navbar-right, h1, h2, h3, h4, h5, h6 {
   line-height: 1;
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
 }
 
 h1 {
@@ -54,6 +60,15 @@ h2 {
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+h3 {
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+  text-align: left;
   font-weight: normal;
   color: $gray-light;
 }
@@ -113,6 +128,10 @@ aside {
   section.user_info {
     margin-top: 20px;
   }
+  section.category {
+    margin-top: 40px;
+    margin-right: 40px;
+  }
   section {
     padding: 10px 0;
     margin-top: 20px;
@@ -148,7 +167,7 @@ aside {
 
 input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
-  width: 100%;
+  //width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
 }
@@ -184,6 +203,79 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+/* pagination */
+.pagination {
+  font-size: 14px;
+}
+
+.home-menu {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+
+.table-head {
+  width: 100%;
+  max-width: 100%;
+  td {
+    padding: 8px;
+  }
+}
+
+/* articles */
+
+.articles {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    display: block;
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .title {
+    display: block;
+    margin-left: 10px;
+  }
+  .content {
+    display: block;
+    margin-left: 10px;
+    margin-right: 10px;
+    word-wrap:break-word;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 10px;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+/* categories */
+.category {
+  word-wrap:break-word;
+  h2 {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.list-unstyled .nav-items{
+  display: none;
+  list-style-type: none;
+  -webkit-padding-start: 20px;
 }
 
 /* microposts */
@@ -232,6 +324,162 @@ span.picture {
     border: 0;
   }
 }
+
+/* blog */
+
+/*
+ * Override Bootstrap's default container.
+ */
+
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
+}
+
+
+/*
+ * Masthead for nav
+ */
+
+.blog-masthead {
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+  box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+}
+
+/* Nav links */
+.blog-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: #cdddeb;
+}
+.blog-nav-item:hover, .blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Active state gets a caret at the bottom */
+.blog-nav .active {
+  color: #fff;
+}
+.blog-nav .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
+}
+
+
+/*
+ * Blog name and description
+ */
+
+.blog-header {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.blog-title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: 60px;
+  font-weight: normal;
+}
+.blog-description {
+  font-size: 20px;
+  color: #999;
+}
+
+
+/*
+ * Main column and sidebar layout
+ */
+
+.blog-main {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.edit-line {
+  font-size: 10px;
+}
+
+/* Sidebar modules for boxing content */
+.sidebar-module {
+  padding: 15px;
+  margin: 0 -15px 15px;
+  word-wrap: break-word;
+}
+.sidebar-module-inset {
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  word-wrap: break-word;
+}
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+  margin-bottom: 0;
+}
+
+
+/* Pagination */
+.pager {
+  margin-bottom: 60px;
+  text-align: left;
+}
+.pager > li > a {
+  width: 140px;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+
+/*
+ * Blog posts
+ */
+
+.blog-post {
+  margin-bottom: 60px;
+}
+.blog-post-title {
+  margin-bottom: 5px;
+  font-size: 30px;
+  word-wrap: break-word;
+}
+.blog-post-meta {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #999;
+}
+
+
+/*
+ * Footer
+ */
+
+.blog-footer {
+  padding: 40px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+.blog-footer p:last-child {
+  margin-bottom: 0;
+}
+
+
 
 /* miscellaneous */
 /* for DEBUG INFO */

@@ -1,0 +1,27 @@
+<div id="article-<%= article.id %>" class="blog-post">
+  <h3 class="blog-post-title"><%= link_to article.title, article %></h3>
+  <p class="blog-post-meta">
+    <% if !article.published_at.nil? %>
+        <%= article.published_at.to_formatted_s(:long) %>
+    <% end %>
+    <% if article.published_at.nil? && article.updated_at.nil? %>
+        <%= article.created_at.to_formatted_s(:long) %>
+    <% end %>
+    <% if article.published_at.nil? && !article.updated_at.nil? %>
+        <%= article.updated_at.to_formatted_s(:long) %>
+    <% end %>
+  </p>
+  <%= article.content %>
+
+  <br>
+  <br>
+  <% if current_user?(article.user) %>
+      <div id="edit-line">
+        <%= link_to "Show", article, method: :get %> |
+        <%= link_to "Edit", edit_article_path(article) %> |
+        <%= link_to "Delete", article, method: :delete,
+                      data: { confirm: "Don't click this, man." } %>
+      </div>
+  <% end %>
+</div>
+
